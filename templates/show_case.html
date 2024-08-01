@@ -1,0 +1,44 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('../static/assets/img/allprojects-bg.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-8">
+        <div class="page-heading">
+          <h1>Projects</h1>
+          <span class="subheading">Some projects which I did.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="mb-4">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <!--1-->
+      {% for i in range(1,5)%}
+      <div class="col">
+          <div class="card shadow-sm">
+              <img class="bd-placeholder-img card-img-top" src="{{ url_for('static', filename='assets/card_img/'+ proj.get(i).img) }}" width="100%" height="225"/>
+
+            <div class="card-body">
+              <h3>{{proj[i].title}}</h3>
+              <p class="card-text">{{proj[i].content}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{{url_for('project',num=i)}}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% include "footer.html" %}
